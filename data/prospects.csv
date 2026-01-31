@@ -1,0 +1,20 @@
+ID,Name,Phone,Email,beds_requested,max_budget,target_move_in,pets,preferred_communities,status,Date,Notes
+P-00001,Alex Rivera,(555) 200-0001,alex.r@example.com,2,"$2,500.00",3/1/2026,1 dog,"Oakwood Commons, Riverside Flats",showing_scheduled,2/15/2026,Looking for first floor unit.
+P-00002,Taylor Kim,(555) 200-0002,taylor.k@example.com,3,"$3,500.00",4/15/2026,2 cats,"Willow Creek Townhomes, Magnolia Ridge",new,2/16/2026,Interested in a townhome layout.
+P-00003,Jordan Lee,(555) 200-0003,jordan.l@example.com,1,"$1,800.00",3/20/2026,none,Riverside Flats,applied,2/17/2026,"Application submitted, waiting for background check."
+P-00004,Morgan Chen,(555) 200-0004,morgan.c@example.com,4,"$4,000.00",3/1/2026,"1 dog, 1 cat","Harvest Meadow Homes, Elm Street Row",showing_scheduled,2/18/2026,"Needs fenced yard, referred by existing tenant."
+P-00005,Casey Park,(555) 200-0005,casey.p@example.com,2,"$2,200.00",4/1/2026,1 dog,"Preston Park Place, Stonebridge Village",waitlist,2/19/2026,Requires covered parking.
+P-00006,Riley Adams,(555) 200-0006,riley.a@example.com,3,"$3,000.00",5/1/2026,none,"The Preserve at Cedar Creek, Lakeside Pointe",toured,2/20/2026,"Toured B-12, likes the area but wants more space."
+P-00007,Avery Brooks,(555) 200-0007,avery.b@example.com,2,"$2,700.00",3/15/2026,none,"Bluebonnet Estates, Oakwood Commons",showing_scheduled,2/21/2026,Flexible on exact move-in date.
+P-00008,Quinn Foster,(555) 200-0008,quinn.f@example.com,1,"$1,950.00",4/10/2026,2 cats,"Lakeside Pointe, Riverside Flats",new,2/22/2026,Referred by existing tenant (T-00012).
+P-00009,Drew Hayes,(555) 200-0009,drew.h@example.com,3,"$3,200.00",3/25/2026,1 dog,Cedar Hill Cottages,toured,2/23/2026,Needs attached garage and ample storage.
+P-00010,Jamie Cruz,(555) 200-0010,jamie.c@example.com,2,"$2,400.00",2/25/2026,none,"Oakwood Commons, Preston Park Place",applied,2/24/2026,"Approved, waiting for final lease draft."
+P-00011,Sam Fletcher,(555) 200-0011,sam.f@example.com,4,"$3,800.00",3/5/2026,none,"Willow Creek Townhomes, Harvest Meadow Homes",showing_scheduled,2/25/2026,Prioritizes proximity to highly-rated schools.
+P-00012,Pat Graham,(555) 200-0012,pat.g@example.com,1,"$2,000.00",2/1/2026,1 cat,"Preston Park Place, Stonebridge Village, Lakeside Pointe",new,2/26/2026,Very urgent move-in. Contact immediately.
+EXAMPLE-ID-001,Test User,(555) 987-6543,test.user@example.com,3,"$3,000.00",2026-04-01,2 dogs,"Maple Gardens, Riverside",Prospect,,Canceled
+EXAMPLE-ID-002,Sample Person,(555) 123-4567,sample.person@example.com,,,,,,,,
+EXAMPLE-ID-003,Demo User,(555) 987-6543,demo.user@example.com,2,"$2,200.00",2026-05-01,No pets,"Oak Ridge, Downtown Lofts",,,Referred by existing tenant
+EXAMPLE-ID-004,Test Contact,(555) 333-2211,test.contact@example.com,2,"$1,800.00",2026-03-01,1 small dog,"Frisco, McKinney",Prospect,2026-02-03T10:00:00-06:00,"Property Tour - Test Contact (2BR, Frisco/McKinney)"
+EXAMPLE-ID-005,Sample Caller,(555) 333-2211,sample.caller@example.com,2,"$1,800.00",2026-03-01,1 small dog,"Frisco, McKinney",,,"Inbound call - prospective tenant looking for 2BR in Frisco/McKinney area. Has 1 small dog. Budget $1800/month. Target move-in March 1st, 2026. Appointment scheduled for Feb 3rd at 10 AM."
+EXAMPLE-ID-006,Demo Contact,(555) 188-8000,demo.contact@example.com,3,"$2,200.00",2026-04-01,None,Plano,,,Ambiguous initial inquiry - caller stated they are currently renting elsewhere but looking to move to Atlas property. Routed as new prospect.
+EXAMPLE-ID-007,Test Prospect,(555) 188-8000,test.prospect@example.com,3,"$2,200.00",2026-04-01,None,Plano,Prospect,2026-02-02 10:00:00,"Property Tour - Test Prospect (3BR, Plano)"

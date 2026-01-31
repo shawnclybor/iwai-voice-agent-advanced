@@ -1,0 +1,210 @@
+{
+  "name": "Client Lookup CRM",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "phone"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -592,
+        96
+      ],
+      "id": "812bbfea-1b1b-4daf-98c5-14323a626022",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "list",
+          "cachedResultName": "Your CRM Sheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1508450591,
+          "mode": "list",
+          "cachedResultName": "Prospects",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit#gid=1508450591"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Phone",
+              "lookupValue": "={{ $json.phone }}"
+            }
+          ]
+        },
+        "combineFilters": "OR",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -384,
+        96
+      ],
+      "id": "26dc3513-5202-4fe9-8233-5d146d21c586",
+      "name": "Client Lookup",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "YOUR_GOOGLE_SHEETS_CREDENTIAL_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "92b8d39f-ffdc-4bfe-9477-576907a28ac3",
+              "leftValue": "={{ $json.Email }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -208,
+        96
+      ],
+      "id": "97374c3e-222e-45ed-b3ef-60d43701b91d",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b134f4e0-755d-46ca-aed5-0ac130407bd7",
+              "name": "message",
+              "value": "This client exists in the Prospective Tenant CRM.",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "32d1328d-28f9-43d1-8b86-27f7c1e7da75",
+      "name": "Message"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5c8dc1cb-0b90-4363-b0c9-e86713560ef0",
+              "name": "message",
+              "value": "This is a new prospective tenant (or an existing tenant). They don't exist in our prospective tenant CRM.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        192
+      ],
+      "id": "a329ba52-5101-4211-9c26-cd1dea02f114",
+      "name": "New Client Message"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Client Lookup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Client Lookup": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "New Client Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "225bc887-9e54-4de0-8bc6-fdfce5d7f45c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ae12a5a7e4fb42828a7592704ca767dac51556f7ef025082630ef59c0b0bda7a"
+  },
+  "id": "umbTtTjqI2B7GqqpJac0t",
+  "tags": [
+    {
+      "updatedAt": "2026-01-27T11:28:12.250Z",
+      "createdAt": "2026-01-27T11:28:12.250Z",
+      "id": "qgCzqdx7L0BmhNeK",
+      "name": "Vapi MCP"
+    }
+  ]
+}

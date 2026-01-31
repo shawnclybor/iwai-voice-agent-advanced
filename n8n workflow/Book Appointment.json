@@ -1,0 +1,298 @@
+{
+  "name": "Book Appointment",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "startTime"
+            },
+            {
+              "name": "endTime"
+            },
+            {
+              "name": "email"
+            },
+            {
+              "name": "eventSummary"
+            },
+            {
+              "name": "name"
+            },
+            {
+              "name": "date"
+            },
+            {
+              "name": "phone"
+            },
+            {
+              "name": "max budget"
+            },
+            {
+              "name": "beds requested"
+            },
+            {
+              "name": "target move date"
+            },
+            {
+              "name": "pets"
+            },
+            {
+              "name": "preferred communities"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "600f165b-9035-4a9e-bba3-7c8e68ed43b9",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "your-email@example.com",
+          "mode": "list",
+          "cachedResultName": "Your Calendar"
+        },
+        "start": "={{ $json.startTime }}",
+        "end": "={{ $json.endTime }}",
+        "additionalFields": {
+          "attendees": [
+            "={{ $json.email }}"
+          ],
+          "summary": "={{ $json.eventSummary }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "c7b876b7-a353-405c-afc6-b7057efd6657",
+      "name": "Create an event",
+      "alwaysOutputData": false,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "YOUR_GOOGLE_CALENDAR_CREDENTIAL_ID",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "list",
+          "cachedResultName": "Your CRM Sheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1508450591,
+          "mode": "list",
+          "cachedResultName": "Prospects",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit#gid=1508450591"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ $json.id }}",
+            "Name": "={{ $('When Executed by Another Workflow').item.json.name }}",
+            "Phone": "={{ $('When Executed by Another Workflow').item.json.phone }}",
+            "Email": "={{ $('When Executed by Another Workflow').item.json.email }}",
+            "beds_requested": "={{ $('When Executed by Another Workflow').item.json['beds requested'] }}",
+            "target_move_in": "={{ $('When Executed by Another Workflow').item.json['target move date'] }}",
+            "pets": "={{ $('When Executed by Another Workflow').item.json.pets }}",
+            "preferred_communities": "={{ $('When Executed by Another Workflow').item.json['preferred communities'] }}",
+            "status": "Prospect",
+            "Date": "={{ $('When Executed by Another Workflow').item.json.startTime }}",
+            "Notes": "={{ $('When Executed by Another Workflow').item.json.eventSummary }}",
+            "max_budget": "={{ $('When Executed by Another Workflow').item.json['max budget'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "beds_requested",
+              "displayName": "beds_requested",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "max_budget",
+              "displayName": "max_budget",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "target_move_in",
+              "displayName": "target_move_in",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pets",
+              "displayName": "pets",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "preferred_communities",
+              "displayName": "preferred_communities",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Notes",
+              "displayName": "Notes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        416,
+        0
+      ],
+      "id": "a0d9dd1e-060f-403a-bbcb-728f114334a7",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "YOUR_GOOGLE_SHEETS_CREDENTIAL_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Create an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an event": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "37aec843-8c8b-429c-bc94-262794f7fe1c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ae12a5a7e4fb42828a7592704ca767dac51556f7ef025082630ef59c0b0bda7a"
+  },
+  "id": "1t7wwUXTi9TRgCna93-RH",
+  "tags": [
+    {
+      "updatedAt": "2026-01-27T11:28:12.250Z",
+      "createdAt": "2026-01-27T11:28:12.250Z",
+      "id": "qgCzqdx7L0BmhNeK",
+      "name": "Vapi MCP"
+    }
+  ]
+}

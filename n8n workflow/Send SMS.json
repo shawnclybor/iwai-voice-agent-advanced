@@ -1,0 +1,91 @@
+{
+  "name": "Send SMS",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "phone"
+            },
+            {
+              "name": "email"
+            },
+            {
+              "name": "reason"
+            },
+            {
+              "name": "priority"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "fd4fd226-5b91-48f8-8844-143455ac5489",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "from": "+15550000000",
+        "to": "+15550000001",
+        "message": "=URGENT: {{ $json.reason }}  Tenant: {{ $json.name }} Phone: {{ $json.phone }} Email: {{ $json.email }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        176,
+        0
+      ],
+      "id": "5f1348da-27ff-4a32-944f-ec8f4e17c6c7",
+      "name": "Send an SMS/MMS/WhatsApp message",
+      "credentials": {
+        "twilioApi": {
+          "id": "YOUR_TWILIO_CREDENTIAL_ID",
+          "name": "Twilio account
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Send an SMS/MMS/WhatsApp message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "da0f998d-7a9c-4a9e-a038-82b282dae9c4",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ae12a5a7e4fb42828a7592704ca767dac51556f7ef025082630ef59c0b0bda7a"
+  },
+  "id": "xqL-o5zzti_jd9Xxf8sPT",
+  "tags": [
+    {
+      "updatedAt": "2026-01-27T11:28:12.250Z",
+      "createdAt": "2026-01-27T11:28:12.250Z",
+      "id": "qgCzqdx7L0BmhNeK",
+      "name": "Vapi MCP"
+    }
+  ]
+}

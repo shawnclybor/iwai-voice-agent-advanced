@@ -1,0 +1,239 @@
+{
+  "name": "Create Ticket",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e392f38f-8a38-4ccb-b09e-ba947b2e57ca",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Urgency }}",
+                    "rightValue": "urgent",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "93f0ea42-8080-4ff6-aad0-cf726c7dd918"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "5965c682-8bbc-43bb-b2ac-9eec31516a31",
+                    "leftValue": "={{ $json.Urgency }}",
+                    "rightValue": "urgent",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "8b9843ba-02b2-4238-83e3-473ceaab0040",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "listId": "YOUR_TRELLO_LIST_ID",
+        "name": "={{ $json.Name }} | {{ $json.Address }}",
+        "description": "={{ $json.Name }} has the following issue: {{ $json.Issue }}\n\nContact Phone: {{ $json.Phone }}\nContact Email: {{ $json.Email }}\n\nProperty: {{ $json.Property }}\nAddress: {{ $json.Address }}\n\nAvailability for Resolution: {{ $json.Availability }}",
+        "additionalFields": {
+          "idLabels": "YOUR_URGENT_LABEL_ID"
+        }
+      },
+      "type": "n8n-nodes-base.trello",
+      "typeVersion": 1,
+      "position": [
+        464,
+        -96
+      ],
+      "id": "32e80baa-1586-4ad8-857c-134572f98595",
+      "name": "Urgent Request",
+      "credentials": {
+        "trelloApi": {
+          "id": "YOUR_TRELLO_CREDENTIAL_ID",
+          "name": "Trello account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "listId": "YOUR_TRELLO_LIST_ID",
+        "name": "={{ $json.Name }} | {{ $json.Address }}",
+        "description": "={{ $json.Name }} has the following issue: {{ $json.Issue }}\n\nContact Phone: {{ $json.Phone }}\nContact Email: {{ $json.Email }}\n\nProperty: {{ $json.Property }}\nAddress: {{ $json.Address }}\n\nAvailability for Resolution: {{ $json.Availability }}",
+        "additionalFields": {
+          "idLabels": "YOUR_NON_URGENT_LABEL_ID"
+        }
+      },
+      "type": "n8n-nodes-base.trello",
+      "typeVersion": 1,
+      "position": [
+        480,
+        128
+      ],
+      "id": "06d1eec8-88d1-45ab-a107-dc86c7e58051",
+      "name": "Non Urgent Request",
+      "credentials": {
+        "trelloApi": {
+          "id": "YOUR_TRELLO_CREDENTIAL_ID",
+          "name": "Trello account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "your-email@example.com",
+        "subject": "=Urgent Maintenance Request: {{ $('When Executed by Another Workflow').item.json.Name }}",
+        "message": "=Hi Admin,\n\nYou have an urgent maintenance request: \n\nName: {{ $('When Executed by Another Workflow').item.json.Name }}\n\nIssue: {{ $('When Executed by Another Workflow').item.json.Issue }}\n\nPhone: {{ $('When Executed by Another Workflow').item.json.Phone }}\nEmail: {{ $('When Executed by Another Workflow').item.json.Email }}\nProperty: {{ $('When Executed by Another Workflow').item.json.Property }}\nAddress: {{ $('When Executed by Another Workflow').item.json.Address }}\n\nAvailability: {{ $('When Executed by Another Workflow').item.json.Availability }}",
+        "options": {
+          "appendAttribution": true
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        672,
+        -96
+      ],
+      "id": "64a0c18c-3ac3-4a98-af27-be98aaec2a3d",
+      "name": "Send a message",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YOUR_GMAIL_CREDENTIAL_ID",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        672,
+        128
+      ],
+      "id": "a1715970-9535-4273-8d8f-0950ce828be0",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Urgent Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Non Urgent Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Urgent Request": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Non Urgent Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "ef6d2a7e-ce9a-4145-92da-1c359019ed05",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ae12a5a7e4fb42828a7592704ca767dac51556f7ef025082630ef59c0b0bda7a"
+  },
+  "id": "Z9fRE2Fh2D7If8PXQcsMr",
+  "tags": [
+    {
+      "updatedAt": "2026-01-27T11:28:12.250Z",
+      "createdAt": "2026-01-27T11:28:12.250Z",
+      "id": "qgCzqdx7L0BmhNeK",
+      "name": "Vapi MCP"
+    }
+  ]
+}

@@ -1,0 +1,987 @@
+{
+  "name": "Vapi MCP Server",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "YOUR_WEBHOOK_PATH_HERE"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 2,
+      "position": [
+        48,
+        384
+      ],
+      "id": "af1f0b5a-74ae-47df-88d9-476a4199baae",
+      "name": "MCP Server Trigger",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE"
+    },
+    {
+      "parameters": {
+        "description": "Call this tool to create a new entry for a new client in the CRM.",
+        "workflowId": {
+          "__rl": true,
+          "value": "o8k2m3k-utOiFTEMW1_qW",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/o8k2m3k-utOiFTEMW1_qW",
+          "cachedResultName": "New Client CRM"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "phoneNumber": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('phoneNumber', ``, 'number') }}",
+            "email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('email', ``, 'string') }}",
+            "fullName": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fullName', ``, 'string') }}",
+            "bedsRequested": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('bedsRequested', ``, 'string') }}",
+            "maxBudget": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('maxBudget', ``, 'string') }}",
+            "moveDate": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('moveDate', ``, 'string') }}",
+            "pets": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('pets', ``, 'string') }}",
+            "preferredCommunities": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('preferredCommunities', ``, 'string') }}",
+            "notes": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('notes', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "fullName",
+              "displayName": "fullName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "phoneNumber",
+              "displayName": "phoneNumber",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "bedsRequested",
+              "displayName": "bedsRequested",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "maxBudget",
+              "displayName": "maxBudget",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "moveDate",
+              "displayName": "moveDate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "pets",
+              "displayName": "pets",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "preferredCommunities",
+              "displayName": "preferredCommunities",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "notes",
+              "displayName": "notes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        832
+      ],
+      "id": "23249b8d-081b-4ed0-9113-5bda00c34180",
+      "name": "Call 'New Client CRM'"
+    },
+    {
+      "parameters": {
+        "description": "Use this tool to check availability within a specified time window.",
+        "workflowId": {
+          "__rl": true,
+          "value": "P86dAzaSmJftVpDoseLwT",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/P86dAzaSmJftVpDoseLwT",
+          "cachedResultName": "Check Availability"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "afterTime": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('afterTime', ``, 'string') }}",
+            "beforeTime": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('beforeTime', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "afterTime",
+              "displayName": "afterTime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "beforeTime",
+              "displayName": "beforeTime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        880,
+        832
+      ],
+      "id": "c3d6fa29-de65-4fe3-8453-a532e2b1f142",
+      "name": "Call 'Check Availability'"
+    },
+    {
+      "parameters": {
+        "description": "Call this tool to look up appointments within a specific time window. This tool must be called before deleting or updating an appointment. ",
+        "workflowId": {
+          "__rl": true,
+          "value": "iuLU23mcFZF0XG2qHMg1m",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/iuLU23mcFZF0XG2qHMg1m",
+          "cachedResultName": "Lookup Appointment"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "afterTime": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('afterTime', ``, 'string') }}",
+            "beforeTime": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('beforeTime', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "afterTime",
+              "displayName": "afterTime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "beforeTime",
+              "displayName": "beforeTime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        368,
+        832
+      ],
+      "id": "997109f4-6562-4982-93d2-9070eee450a8",
+      "name": "Call 'Lookup Appointment'"
+    },
+    {
+      "parameters": {
+        "description": "Call this tool to delete an appointment.",
+        "workflowId": {
+          "__rl": true,
+          "value": "48I7WXm5CYj1b_Nw_go_Y",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/48I7WXm5CYj1b_Nw_go_Y",
+          "cachedResultName": "Delete Appointment"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "eventID": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('eventID', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "eventID"
+          ],
+          "schema": [
+            {
+              "id": "eventID",
+              "displayName": "eventID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        624,
+        832
+      ],
+      "id": "04d888f4-09a4-48e9-9512-44df9fa38bcf",
+      "name": "Call 'Delete Appointment'"
+    },
+    {
+      "parameters": {
+        "description": "Call this tool to update an appointment.",
+        "workflowId": {
+          "__rl": true,
+          "value": "Isw55LUhmEw8PjJzfLB7F",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/Isw55LUhmEw8PjJzfLB7F",
+          "cachedResultName": "Update Appointment"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "startTime": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('startTime', ``, 'string') }}",
+            "endTime": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('endTime', ``, 'string') }}",
+            "eventID": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('eventID', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "startTime",
+              "displayName": "startTime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "endTime",
+              "displayName": "endTime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "eventID",
+              "displayName": "eventID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        496,
+        832
+      ],
+      "id": "ef60ce02-d2a3-46e6-9de0-9cdc6f5b4eaa",
+      "name": "Call 'Update Appointment'"
+    },
+    {
+      "parameters": {
+        "description": "=$fromAI('Urgency', 'Enter \"urgent\" for emergency issues requiring immediate notification, otherwise enter \"non-urgent\"')",
+        "workflowId": {
+          "__rl": true,
+          "value": "Z9fRE2Fh2D7If8PXQcsMr",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/Z9fRE2Fh2D7If8PXQcsMr",
+          "cachedResultName": "Create Ticket"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Name', ``, 'string') }}",
+            "Urgency": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Urgency', ``, 'string') }}",
+            "Issue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Issue', ``, 'string') }}",
+            "Phone": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Phone', ``, 'string') }}",
+            "Email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Email', ``, 'string') }}",
+            "Availability": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Availability', ``, 'string') }}",
+            "Property": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Property', ``, 'string') }}",
+            "Address": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Address', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Urgency",
+              "displayName": "Urgency",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Issue",
+              "displayName": "Issue",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Availability",
+              "displayName": "Availability",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Property",
+              "displayName": "Property",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Address",
+              "displayName": "Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        -224,
+        832
+      ],
+      "id": "09ad31f3-d084-4b64-b4b2-1c533a393c5d",
+      "name": "Call 'Create Ticket'"
+    },
+    {
+      "parameters": {
+        "description": "Call this tool to send a SMS/text.",
+        "workflowId": {
+          "__rl": true,
+          "value": "xqL-o5zzti_jd9Xxf8sPT",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/xqL-o5zzti_jd9Xxf8sPT",
+          "cachedResultName": "Send SMS"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('name', ``, 'string') }}",
+            "phone": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('phone', ``, 'string') }}",
+            "email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('email', ``, 'string') }}",
+            "reason": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('reason', ``, 'string') }}",
+            "priority": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('priority', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "reason",
+              "displayName": "reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "priority",
+              "displayName": "priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        -384,
+        832
+      ],
+      "id": "7706c222-a73f-44a6-82a2-ebfbc2571125",
+      "name": "Call 'Send SMS'"
+    },
+    {
+      "parameters": {
+        "description": "Call this tool to look up an email OR phone number in the CRM.",
+        "workflowId": {
+          "__rl": true,
+          "value": "umbTtTjqI2B7GqqpJac0t",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/umbTtTjqI2B7GqqpJac0t",
+          "cachedResultName": "Client Lookup CRM"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "phone": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('phone', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "email"
+          ],
+          "schema": [
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        160,
+        832
+      ],
+      "id": "1f5235db-d80f-4cd9-8ac2-7bc9aec12652",
+      "name": "Call 'Client Lookup'"
+    },
+    {
+      "parameters": {
+        "description": "Call this tool to book a calendar event for a client.",
+        "workflowId": {
+          "__rl": true,
+          "value": "1t7wwUXTi9TRgCna93-RH",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/1t7wwUXTi9TRgCna93-RH",
+          "cachedResultName": "Book Appointment"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "startTime": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('startTime', ``, 'string') }}",
+            "endTime": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('endTime', ``, 'string') }}",
+            "email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('email', ``, 'string') }}",
+            "eventSummary": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('eventSummary', ``, 'string') }}",
+            "name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('name', ``, 'string') }}",
+            "date": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('date', ``, 'string') }}",
+            "phone": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('phone', ``, 'string') }}",
+            "max budget": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('max_budget', ``, 'string') }}",
+            "beds requested": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('beds_requested', ``, 'string') }}",
+            "target move date": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('target_move_date', ``, 'string') }}",
+            "pets": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('pets', ``, 'string') }}",
+            "preferred communities": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('preferred_communities', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "startTime",
+              "displayName": "startTime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "endTime",
+              "displayName": "endTime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "eventSummary",
+              "displayName": "eventSummary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "date",
+              "displayName": "date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "max budget",
+              "displayName": "max budget",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "beds requested",
+              "displayName": "beds requested",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "target move date",
+              "displayName": "target move date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "pets",
+              "displayName": "pets",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "preferred communities",
+              "displayName": "preferred communities",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        752,
+        832
+      ],
+      "id": "3c5a20c3-84ce-4a7f-be2b-67c26883e7d8",
+      "name": "Call 'Book Appointment'"
+    },
+    {
+      "parameters": {
+        "description": "Call this tool to send an email.",
+        "workflowId": {
+          "__rl": true,
+          "value": "1i4_yMB4xV0HBm-by5OAS",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/1i4_yMB4xV0HBm-by5OAS",
+          "cachedResultName": "Send Email"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "phone number",
+              "displayName": "phone number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "reason",
+              "displayName": "reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "notes",
+              "displayName": "notes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        -512,
+        832
+      ],
+      "id": "ae111513-1fab-4a71-8e0c-637ce11eeda7",
+      "name": "Send Email"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Call 'New Client CRM'": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Check Availability'": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Lookup Appointment'": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Delete Appointment'": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Update Appointment'": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Create Ticket'": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Send SMS'": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Client Lookup'": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Book Appointment'": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "6ad48dfd-834c-49ed-847b-c0b4126e3591",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ae12a5a7e4fb42828a7592704ca767dac51556f7ef025082630ef59c0b0bda7a"
+  },
+  "id": "oOzhMuVasdc4gydna7xjN",
+  "tags": [
+    {
+      "updatedAt": "2026-01-27T11:28:12.250Z",
+      "createdAt": "2026-01-27T11:28:12.250Z",
+      "id": "qgCzqdx7L0BmhNeK",
+      "name": "Vapi MCP"
+    }
+  ]
+}

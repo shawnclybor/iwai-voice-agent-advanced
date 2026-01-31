@@ -1,0 +1,97 @@
+{
+  "name": "Send Email",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "phone number"
+            },
+            {
+              "name": "email"
+            },
+            {
+              "name": "reason"
+            },
+            {
+              "name": "notes"
+            },
+            {
+              "name": "status"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "cdbbfcd6-ecc7-48e2-a570-0a59b8b19cbc",
+      "name": "Send Email"
+    },
+    {
+      "parameters": {
+        "sendTo": "your-email@example.com",
+        "subject": "=Hi Admin,\n\nPlease contact the following ",
+        "message": "=Hi Admin,\n\nWe have a new contact request!\n\nType: {{ $json.status }}\n\nName: {{ $json.name }}\nPhone: {{ $json['phone number'] }}\nEmail: {{ $json.email }}\n\nNotes: {{ $json.notes }}\n",
+        "options": {
+          "appendAttribution": true
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "46ffa421-33fe-47e9-a96d-e836751e8929",
+      "name": "Send a message",
+      "webhookId": "YOUR_WEBHOOK_ID_HERE",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YOUR_GMAIL_CREDENTIAL_ID",
+          "name": "Gmail account
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Send Email": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "dd7dd262-096c-4e3d-a4df-a9d636072b85",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ae12a5a7e4fb42828a7592704ca767dac51556f7ef025082630ef59c0b0bda7a"
+  },
+  "id": "1i4_yMB4xV0HBm-by5OAS",
+  "tags": [
+    {
+      "updatedAt": "2026-01-27T11:28:12.250Z",
+      "createdAt": "2026-01-27T11:28:12.250Z",
+      "id": "qgCzqdx7L0BmhNeK",
+      "name": "Vapi MCP"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "n8n": {
+      "type": "http",
+      "url": "https://your-n8n-instance.example.com/mcp/YOUR_WEBHOOK_ID_HERE",
+      "headers": {
+        "Authorization": "Bearer YOUR_JWT_TOKEN_HERE"
+      }
+    }
+  }
+}
